@@ -1,0 +1,20 @@
+Issue 1:
+    PS D:\Projects\nodejs-tutorial> nodemon .\index.js
+    nodemon : File C:\Users\Shahbaz\AppData\Roaming\npm\nodemon.ps1 cannot be loaded because running scripts is disabled on this system. For more information, see about_Execution_Policies at 
+    https:/go.microsoft.com/fwlink/?LinkID=135170.
+    At line:1 char:1
+    + nodemon .\index.js
+    + ~~~~~~~
+        + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+        + FullyQualifiedErrorId : UnauthorizedAccess
+    PS D:\Projects\nodejs-tutorial> 
+
+Fix:
+    https://stackoverflow.com/questions/63423584/how-to-fix-error-nodemon-ps1-cannot-be-loaded-because-running-scripts-is-disabl
+
+    I'd recommend using RemoteSigned as opposed to Unrestricted, and limiting the policy to the CurrentUser if possible.
+
+    Run Powershell as Admin, and then:
+
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+    RemoteSigned: "The default execution policy for Windows server computers."
